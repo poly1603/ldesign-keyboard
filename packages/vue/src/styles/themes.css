@@ -1,0 +1,188 @@
+/**
+ * LDesign Keyboard - 主题预设
+ * 简洁 · 现代 · 优雅
+ */
+
+/* ====================
+   iOS 主题 - 苹果风格
+   ==================== */
+[data-theme="ios"],
+.keyboard-theme-ios {
+  --keyboard-bg: #d1d3d9;
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #000000;
+  --keyboard-key-active-bg: #c8cad0;
+  --keyboard-key-border: #a8aab4;
+  --keyboard-fn-bg: #adb0b8;
+  --keyboard-fn-color: #000000;
+  --keyboard-fn-active-bg: #9ea1a9;
+  --keyboard-primary-bg: #007aff;
+  --keyboard-primary-active-bg: #0066d6;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 5px;
+  --keyboard-font-size: 23px;
+}
+
+[data-theme="ios"] .keyboard-key,
+.keyboard-theme-ios .keyboard-key {
+  font-weight: 400;
+  box-shadow: 0 1px 0 var(--keyboard-key-border);
+}
+
+[data-theme="ios"] .keyboard-key:active,
+.keyboard-theme-ios .keyboard-key:active {
+  transform: none;
+}
+
+/* ====================
+   Material 主题 - 质感设计
+   ==================== */
+[data-theme="material"],
+.keyboard-theme-material {
+  --keyboard-bg: #eceff1;
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #263238;
+  --keyboard-key-active-bg: #cfd8dc;
+  --keyboard-key-border: #b0bec5;
+  --keyboard-fn-bg: #cfd8dc;
+  --keyboard-fn-color: #455a64;
+  --keyboard-fn-active-bg: #b0bec5;
+  --keyboard-primary-bg: #1976d2;
+  --keyboard-primary-active-bg: #1565c0;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 4px;
+  --keyboard-font-size: 20px;
+}
+
+[data-theme="material"] .keyboard-key,
+.keyboard-theme-material .keyboard-key {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="material"] .keyboard-key:active,
+.keyboard-theme-material .keyboard-key:active {
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ====================
+   Minimal 极简主题 - 无边框
+   ==================== */
+[data-theme="minimal"],
+.keyboard-theme-minimal {
+  --keyboard-bg: #fafafa;
+  --keyboard-key-bg: transparent;
+  --keyboard-key-color: #333333;
+  --keyboard-key-active-bg: rgba(0, 0, 0, 0.06);
+  --keyboard-key-border: transparent;
+  --keyboard-fn-bg: transparent;
+  --keyboard-fn-color: #888888;
+  --keyboard-fn-active-bg: rgba(0, 0, 0, 0.06);
+  --keyboard-primary-bg: #333333;
+  --keyboard-primary-active-bg: #1a1a1a;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 10px;
+  --keyboard-key-gap: 4px;
+  --keyboard-font-size: 18px;
+}
+
+[data-theme="minimal"] .keyboard-key,
+.keyboard-theme-minimal .keyboard-key {
+  box-shadow: none;
+}
+
+[data-theme="minimal"] .keyboard-key:active,
+.keyboard-theme-minimal .keyboard-key:active {
+  transform: scale(0.95);
+}
+
+/* ====================
+   Dark 深色主题
+   ==================== */
+[data-theme="dark"],
+.keyboard-theme-dark {
+  --keyboard-bg: #1a1a1a;
+  --keyboard-key-bg: #333333;
+  --keyboard-key-color: #ffffff;
+  --keyboard-key-active-bg: #444444;
+  --keyboard-key-border: #222222;
+  --keyboard-fn-bg: #262626;
+  --keyboard-fn-color: #cccccc;
+  --keyboard-fn-active-bg: #333333;
+  --keyboard-primary-bg: #2563eb;
+  --keyboard-primary-active-bg: #1d4ed8;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 8px;
+}
+
+[data-theme="dark"] .keyboard-key,
+.keyboard-theme-dark .keyboard-key {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* 深色车牌键盘特殊样式 */
+[data-theme="dark"] .key-plate-special,
+.keyboard-theme-dark .key-plate-special {
+  background-color: #4a3728;
+  color: #fcd34d;
+}
+
+/* ====================
+   Green 护眼主题
+   ==================== */
+[data-theme="green"],
+.keyboard-theme-green {
+  --keyboard-bg: #e8f5e9;
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #2e7d32;
+  --keyboard-key-active-bg: #c8e6c9;
+  --keyboard-key-border: #a5d6a7;
+  --keyboard-fn-bg: #c8e6c9;
+  --keyboard-fn-color: #388e3c;
+  --keyboard-fn-active-bg: #a5d6a7;
+  --keyboard-primary-bg: #43a047;
+  --keyboard-primary-active-bg: #388e3c;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 8px;
+}
+
+/* ====================
+   Blue 蓝色主题
+   ==================== */
+[data-theme="blue"],
+.keyboard-theme-blue {
+  --keyboard-bg: #e3f2fd;
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #1565c0;
+  --keyboard-key-active-bg: #bbdefb;
+  --keyboard-key-border: #90caf9;
+  --keyboard-fn-bg: #bbdefb;
+  --keyboard-fn-color: #1976d2;
+  --keyboard-fn-active-bg: #90caf9;
+  --keyboard-primary-bg: #1976d2;
+  --keyboard-primary-active-bg: #1565c0;
+  --keyboard-primary-color: #ffffff;
+  --keyboard-key-radius: 8px;
+}
+
+/* ====================
+   主题工具类
+   ==================== */
+.keyboard-theme-light {
+  color-scheme: light;
+}
+
+.keyboard-theme-dark {
+  color-scheme: dark;
+}
+
+/* 平滑主题切换 */
+.keyboard-popup,
+.virtual-keyboard {
+  transition: background-color 0.2s ease;
+}
+
+.keyboard-key {
+  transition: background-color var(--keyboard-transition) ease,
+    transform var(--keyboard-transition) ease;
+}

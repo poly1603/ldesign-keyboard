@@ -1,0 +1,81 @@
+{
+  "name": "@ldesign/keyboard",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "高性能虚拟键盘组件库，支持 Vue 3，提供字母、数字、车牌号等多种键盘布局",
+  "author": "LDesign Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ldesign/keyboard.git"
+  },
+  "homepage": "https://github.com/ldesign/keyboard#readme",
+  "bugs": {
+    "url": "https://github.com/ldesign/keyboard/issues"
+  },
+  "keywords": [
+    "ldesign",
+    "keyboard",
+    "virtual-keyboard",
+    "vue",
+    "vue3",
+    "typescript",
+    "license-plate",
+    "input"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./packages/core/es/index.d.ts",
+      "import": "./packages/core/es/index.js",
+      "require": "./packages/core/lib/index.cjs"
+    },
+    "./core": {
+      "types": "./packages/core/es/index.d.ts",
+      "import": "./packages/core/es/index.js",
+      "require": "./packages/core/lib/index.cjs"
+    },
+    "./vue": {
+      "types": "./packages/vue/es/index.d.ts",
+      "import": "./packages/vue/es/index.js",
+      "require": "./packages/vue/lib/index.cjs"
+    },
+    "./vue/style.css": "./packages/vue/es/styles/index.css",
+    "./package.json": "./package.json"
+  },
+  "main": "./packages/core/lib/index.cjs",
+  "module": "./packages/core/es/index.js",
+  "types": "./packages/core/es/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "packages/*/es",
+    "packages/*/lib",
+    "packages/*/dist",
+    "package.json"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:core": "pnpm --filter @ldesign/keyboard-core build",
+    "build:vue": "pnpm --filter @ldesign/keyboard-vue build",
+    "dev": "pnpm --filter @ldesign/keyboard-playground dev",
+    "dev:lib": "pnpm -r --parallel dev",
+    "clean": "rimraf packages/*/es packages/*/lib packages/*/dist",
+    "lint": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.0.0",
+    "eslint": "^9.18.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.7.3"
+  }
+}

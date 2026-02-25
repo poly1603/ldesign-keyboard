@@ -1,0 +1,267 @@
+/**
+ * LDesign Keyboard 样式
+ * @module styles
+ */
+
+/* 核心样式 */
+@import './keyboard.css';
+
+/* 主题样式 */
+@import './themes.css';
+
+/* 深色主题 */
+.dark,
+[data-theme="dark"] {
+  --keyboard-bg: #374151;
+  --keyboard-key-bg: #4b5563;
+  --keyboard-key-color: #f9fafb;
+  --keyboard-key-active-bg: #6b7280;
+  --keyboard-fn-key-bg: #1f2937;
+  --keyboard-fn-key-color: #f9fafb;
+  --keyboard-fn-key-active-bg: #111827;
+  --keyboard-primary-bg: #2563eb;
+  --keyboard-primary-active-bg: #1d4ed8;
+}
+
+/* iOS 风格主题 */
+.keyboard-theme-ios {
+  --keyboard-bg: #d1d5db;
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #000000;
+  --keyboard-key-active-bg: #c4c7cc;
+  --keyboard-fn-key-bg: #adb3bc;
+  --keyboard-fn-key-color: #000000;
+  --keyboard-fn-key-active-bg: #8e9399;
+  --keyboard-primary-bg: #007aff;
+  --keyboard-primary-active-bg: #0062cc;
+  --keyboard-key-radius: 5px;
+}
+
+/* Android 风格主题 */
+.keyboard-theme-android {
+  --keyboard-bg: #263238;
+  --keyboard-key-bg: #37474f;
+  --keyboard-key-color: #ffffff;
+  --keyboard-key-active-bg: #455a64;
+  --keyboard-fn-key-bg: #455a64;
+  --keyboard-fn-key-color: #90a4ae;
+  --keyboard-fn-key-active-bg: #546e7a;
+  --keyboard-primary-bg: #4285f4;
+  --keyboard-primary-active-bg: #3367d6;
+  --keyboard-key-radius: 4px;
+}
+
+/* 基础重置 */
+.virtual-keyboard,
+.virtual-keyboard * {
+  box-sizing: border-box;
+}
+
+.virtual-keyboard {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 禁止选中 */
+.virtual-keyboard,
+.keyboard-popup {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 禁止 iOS 点击高亮 */
+.keyboard-key {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  :root {
+    --keyboard-key-height: 46px;
+    --keyboard-font-size: 18px;
+  }
+
+  .virtual-keyboard {
+    padding: 6px 2px;
+  }
+
+  .keyboard-key {
+    margin: 3px;
+  }
+}
+
+/* 横屏优化 */
+@media (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --keyboard-key-height: 36px;
+    --keyboard-font-size: 14px;
+  }
+
+  .virtual-keyboard {
+    padding: 4px 2px;
+  }
+}
+
+/* 安全区域适配 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .keyboard-popup--mobile {
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  }
+}
+
+/* =========================
+   数字键盘专用样式
+   ========================= */
+.number-keyboard-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.number-keyboard-row .keyboard-key {
+  flex: 1;
+  max-width: 25%;
+  height: 52px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.number-keyboard-row .key-number {
+  background-color: var(--keyboard-key-bg, #fff);
+  color: var(--keyboard-key-color, #333);
+}
+
+.number-keyboard-row .key-side {
+  background-color: var(--keyboard-fn-key-bg, #d4d6dc);
+  color: var(--keyboard-fn-key-color, #333);
+  font-size: 14px;
+}
+
+.number-keyboard-row .key-side:active {
+  background-color: var(--keyboard-fn-key-active-bg, #b8bac0);
+}
+
+.number-keyboard-row .key-done {
+  background-color: var(--keyboard-primary-bg, #007aff);
+  color: #fff;
+}
+
+.number-keyboard-row .key-done:active {
+  background-color: var(--keyboard-primary-active-bg, #0062cc);
+}
+
+.number-keyboard-row .key-decimal,
+.number-keyboard-row .key-double-zero {
+  background-color: var(--keyboard-key-bg, #fff);
+  font-size: 18px;
+}
+
+.number-keyboard-row .key-placeholder {
+  background-color: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.number-keyboard-row .key-placeholder:active {
+  transform: none;
+  background-color: transparent;
+}
+
+/* =========================
+   PC端专用样式
+   ========================= */
+.keyboard-popup--desktop {
+  min-width: 320px;
+}
+
+.keyboard-popup--desktop .keyboard-key {
+  height: 40px;
+  font-size: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.keyboard-popup--desktop .keyboard-key:hover {
+  background-color: var(--keyboard-key-active-bg, #e5e7eb);
+}
+
+.keyboard-popup--desktop .keyboard-key--backspace:hover,
+.keyboard-popup--desktop .keyboard-key--shift:hover,
+.keyboard-popup--desktop .keyboard-key--tab:hover,
+.keyboard-popup--desktop .keyboard-key--clear:hover,
+.keyboard-popup--desktop .keyboard-key--close:hover {
+  background-color: var(--keyboard-fn-key-active-bg, #b8bac0);
+}
+
+.keyboard-popup--desktop .keyboard-key--done:hover,
+.keyboard-popup--desktop .keyboard-key--enter:hover {
+  background-color: var(--keyboard-primary-active-bg, #0062cc);
+}
+
+/* PC端数字键盘 */
+.keyboard-popup--desktop .number-keyboard-row .keyboard-key {
+  height: 44px;
+  font-size: 18px;
+}
+
+.keyboard-popup--desktop .number-keyboard-row .key-side {
+  font-size: 13px;
+}
+
+/* =========================
+   移动端专用样式
+   ========================= */
+.keyboard-popup--mobile {
+  width: 100%;
+}
+
+.keyboard-popup--mobile .keyboard-key {
+  height: 46px;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* 移动端数字键盘 */
+.keyboard-popup--mobile .number-keyboard-row .keyboard-key {
+  height: 54px;
+  font-size: 24px;
+  border-radius: 8px;
+}
+
+.keyboard-popup--mobile .number-keyboard-row .key-side {
+  font-size: 15px;
+}
+
+/* =========================
+   键盘顶部栅栏（移动端）
+   ========================= */
+.keyboard-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: var(--keyboard-bg, #d1d5db);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-toolbar__title {
+  font-size: 14px;
+  color: var(--keyboard-fn-key-color, #666);
+}
+
+.keyboard-toolbar__done {
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  color: var(--keyboard-primary-bg, #007aff);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.keyboard-toolbar__done:active {
+  opacity: 0.7;
+}

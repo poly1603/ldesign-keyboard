@@ -1,0 +1,399 @@
+/**
+ * LDesign Keyboard - 核心样式
+ * 简洁现代的默认主题
+ */
+
+/* ====================
+   CSS 变量 - 简洁主题
+   ==================== */
+:root {
+  /* 键盘背景 */
+  --keyboard-bg: #f7f7f7;
+
+  /* 普通按键 */
+  --keyboard-key-bg: #ffffff;
+  --keyboard-key-color: #333333;
+  --keyboard-key-active-bg: #e5e5e5;
+  --keyboard-key-border: #e0e0e0;
+
+  /* 功能键 */
+  --keyboard-fn-bg: #e8e8e8;
+  --keyboard-fn-color: #666666;
+  --keyboard-fn-active-bg: #d8d8d8;
+
+  /* 主色调按键 */
+  --keyboard-primary-bg: #2563eb;
+  --keyboard-primary-active-bg: #1d4ed8;
+  --keyboard-primary-color: #ffffff;
+
+  /* 按键尺寸 */
+  --keyboard-key-height: 48px;
+  --keyboard-key-radius: 8px;
+  --keyboard-key-gap: 6px;
+
+  /* 字体 */
+  --keyboard-font-size: 20px;
+  --keyboard-fn-font-size: 14px;
+
+  /* 动画 */
+  --keyboard-transition: 80ms ease-out;
+}
+
+/* ====================
+   基础重置
+   ==================== */
+.virtual-keyboard,
+.virtual-keyboard *,
+.keyboard-popup,
+.keyboard-popup * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.virtual-keyboard {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ====================
+   键盘容器
+   ==================== */
+.virtual-keyboard {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background-color: var(--keyboard-bg);
+  width: 100%;
+}
+
+.virtual-keyboard__row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: var(--keyboard-key-gap);
+  margin-bottom: var(--keyboard-key-gap);
+}
+
+.virtual-keyboard__row:last-child {
+  margin-bottom: 0;
+}
+
+/* ====================
+   按键基础样式
+   ==================== */
+.keyboard-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: var(--keyboard-key-height);
+  min-width: 0;
+  padding: 0 4px;
+  border: none;
+  border-radius: var(--keyboard-key-radius);
+  background-color: var(--keyboard-key-bg);
+  color: var(--keyboard-key-color);
+  font-size: var(--keyboard-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color var(--keyboard-transition),
+    transform var(--keyboard-transition);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 1px 0 var(--keyboard-key-border);
+}
+
+.keyboard-key:active {
+  background-color: var(--keyboard-key-active-bg);
+  transform: scale(0.98);
+}
+
+.keyboard-key--disabled {
+  opacity: 0;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ====================
+   功能键样式
+   ==================== */
+.keyboard-key--backspace,
+.keyboard-key--shift,
+.keyboard-key--tab,
+.keyboard-key--clear,
+.keyboard-key--close {
+  background-color: var(--keyboard-fn-bg);
+  color: var(--keyboard-fn-color);
+  font-size: var(--keyboard-fn-font-size);
+  font-weight: 400;
+  box-shadow: 0 1px 0 var(--keyboard-key-border);
+}
+
+.keyboard-key--backspace:active,
+.keyboard-key--shift:active,
+.keyboard-key--tab:active,
+.keyboard-key--clear:active,
+.keyboard-key--close:active {
+  background-color: var(--keyboard-fn-active-bg);
+}
+
+/* Shift 激活状态 */
+.keyboard-key--shift.keyboard-key--active {
+  background-color: var(--keyboard-primary-bg);
+  color: var(--keyboard-primary-color);
+}
+
+/* ====================
+   主色按键（完成/确认）
+   ==================== */
+.keyboard-key--done,
+.keyboard-key--enter {
+  background-color: var(--keyboard-primary-bg);
+  color: var(--keyboard-primary-color);
+  font-size: var(--keyboard-fn-font-size);
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.keyboard-key--done:active,
+.keyboard-key--enter:active {
+  background-color: var(--keyboard-primary-active-bg);
+}
+
+/* ====================
+   空格键
+   ==================== */
+.keyboard-key--space {
+  flex: 4;
+}
+
+/* ====================
+   占位键（透明）
+   ==================== */
+.key-placeholder {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ====================
+   数字键盘通用样式
+   ==================== */
+.numpad-row {
+  display: flex;
+  gap: var(--keyboard-key-gap);
+  width: 100%;
+}
+
+.numpad-row .keyboard-key {
+  flex: 1;
+  height: 54px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* 数字键 */
+.key-num {
+  background-color: var(--keyboard-key-bg);
+  color: var(--keyboard-key-color);
+}
+
+/* 功能键 */
+.key-numpad-fn {
+  background-color: var(--keyboard-fn-bg);
+  color: var(--keyboard-fn-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* 完成键 */
+.key-numpad-done {
+  background-color: var(--keyboard-primary-bg);
+  color: var(--keyboard-primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.key-numpad-done:active {
+  background-color: var(--keyboard-primary-active-bg);
+}
+
+/* ====================
+   车牌键盘样式
+   ==================== */
+.virtual-keyboard:has(.plate-keyboard-row) {
+  min-width: 340px;
+}
+
+.plate-keyboard-row {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.plate-keyboard-row .keyboard-key {
+  flex: 1 1 0;
+  height: 42px;
+  min-width: 28px;
+  max-width: none;
+  padding: 0 2px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.key-plate-province,
+.key-plate-letter,
+.key-plate-number {
+  background-color: var(--keyboard-key-bg);
+}
+
+.key-plate-fn {
+  background-color: var(--keyboard-fn-bg);
+  font-size: 12px;
+  flex: 1.2 1 0 !important;
+}
+
+.key-plate-done {
+  background-color: var(--keyboard-primary-bg);
+  color: var(--keyboard-primary-color);
+  font-size: 13px;
+  box-shadow: none;
+  flex: 1.5 1 0 !important;
+}
+
+.key-plate-switch {
+  background-color: var(--keyboard-fn-bg);
+  font-size: 12px;
+  flex: 1.3 1 0 !important;
+}
+
+.key-plate-special {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+/* ====================
+   弹出层样式
+   ==================== */
+.keyboard-popup {
+  position: fixed;
+  z-index: 1000;
+  background-color: var(--keyboard-bg);
+  overflow: hidden;
+}
+
+.keyboard-popup--desktop {
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+}
+
+.keyboard-popup--mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 安全区域 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .keyboard-popup--mobile {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ====================
+   遮罩层
+   ==================== */
+.keyboard-mask {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+/* ====================
+   动画
+   ==================== */
+.keyboard-mask-enter-active,
+.keyboard-mask-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.keyboard-mask-enter-from,
+.keyboard-mask-leave-to {
+  opacity: 0;
+}
+
+.keyboard-fade-enter-active,
+.keyboard-fade-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.keyboard-fade-enter-from,
+.keyboard-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.98);
+}
+
+.keyboard-slide-enter-active,
+.keyboard-slide-leave-active {
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.keyboard-slide-enter-from,
+.keyboard-slide-leave-to {
+  transform: translateY(100%);
+}
+
+/* ====================
+   移动端适配
+   ==================== */
+@media (max-width: 768px) {
+  .virtual-keyboard {
+    padding: 6px;
+  }
+
+  .keyboard-key {
+    height: 44px;
+  }
+
+  .numpad-row .keyboard-key {
+    height: 52px;
+    font-size: 22px;
+  }
+
+  .plate-keyboard-row .keyboard-key {
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+/* ====================
+   横屏适配
+   ==================== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .keyboard-key {
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .numpad-row .keyboard-key {
+    height: 42px;
+    font-size: 18px;
+  }
+}

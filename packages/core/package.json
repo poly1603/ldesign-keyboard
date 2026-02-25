@@ -1,0 +1,114 @@
+{
+  "name": "@ldesign/keyboard-core",
+  "version": "0.1.0",
+  "description": "LDesign 虚拟键盘 - 框架无关的核心模块",
+  "keywords": [
+    "keyboard",
+    "virtual-keyboard",
+    "input",
+    "license-plate",
+    "ldesign",
+    "typescript"
+  ],
+  "author": "LDesign Team",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.cjs",
+      "default": "./es/index.js"
+    },
+    "./layouts": {
+      "types": "./es/layouts/index.d.ts",
+      "import": "./es/layouts/index.js",
+      "require": "./lib/layouts/index.cjs",
+      "default": "./es/layouts/index.js"
+    },
+    "./layouts/*": {
+      "types": "./es/layouts/*.d.ts",
+      "import": "./es/layouts/*.js",
+      "require": "./lib/layouts/*.cjs",
+      "default": "./es/layouts/*.js"
+    },
+    "./managers": {
+      "types": "./es/managers/index.d.ts",
+      "import": "./es/managers/index.js",
+      "require": "./lib/managers/index.cjs",
+      "default": "./es/managers/index.js"
+    },
+    "./managers/*": {
+      "types": "./es/managers/*.d.ts",
+      "import": "./es/managers/*.js",
+      "require": "./lib/managers/*.cjs",
+      "default": "./es/managers/*.js"
+    },
+    "./themes": {
+      "types": "./es/themes/index.d.ts",
+      "import": "./es/themes/index.js",
+      "require": "./lib/themes/index.cjs",
+      "default": "./es/themes/index.js"
+    },
+    "./themes/*": {
+      "types": "./es/themes/*.d.ts",
+      "import": "./es/themes/*.js",
+      "require": "./lib/themes/*.cjs",
+      "default": "./es/themes/*.js"
+    },
+    "./types": {
+      "types": "./es/types/index.d.ts",
+      "import": "./es/types/index.js",
+      "require": "./lib/types/index.cjs",
+      "default": "./es/types/index.js"
+    },
+    "./types/*": {
+      "types": "./es/types/*.d.ts",
+      "import": "./es/types/*.js",
+      "require": "./lib/types/*.cjs",
+      "default": "./es/types/*.js"
+    },
+    "./utils": {
+      "types": "./es/utils/index.d.ts",
+      "import": "./es/utils/index.js",
+      "require": "./lib/utils/index.cjs",
+      "default": "./es/utils/index.js"
+    },
+    "./utils/*": {
+      "types": "./es/utils/*.d.ts",
+      "import": "./es/utils/*.js",
+      "require": "./lib/utils/*.cjs",
+      "default": "./es/utils/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.cjs",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
+  "unpkg": "./dist/index.js",
+  "jsdelivr": "./dist/index.js",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "es",
+    "lib"
+  ],
+  "scripts": {
+    "build": "ldesign-builder build",
+    "dev": "ldesign-builder build --watch",
+    "clean": "rimraf dist es lib",
+    "lint": "eslint . --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.0.0",
+    "@ldesign/builder": "workspace:*",
+    "eslint": "^9.18.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.7.3"
+  },
+  "typings": "./es/index.d.ts",
+  "browser": "./dist/index.js"
+}
